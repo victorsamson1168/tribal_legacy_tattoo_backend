@@ -16,7 +16,7 @@ console.log(`listning on port ${process.env.PORT}`)});
 
 app.get("/",async(req,res)=>{
     try{
-        res.status(200).json({ status: "success", message: "Welcome to the API"}).end();
+        res.status(200).json({ status: "success", message: "Welcome to the API...test direct push"}).end();
     }
     catch(err)
     {
