@@ -12,3 +12,15 @@ app.use("/users",Users);
 
 app.listen(process.env.PORT,()=>{
 console.log(`listning on port ${process.env.PORT}`)});
+
+
+app.get("/",async(req,res)=>{
+    try{
+        res.status(200).json({ status: "success", message: "Welcome to the API"});
+    }
+    catch(err)
+    {
+        res.status(400).send("something went wrong");
+        console.log("something went wrong",err);
+    }
+})
