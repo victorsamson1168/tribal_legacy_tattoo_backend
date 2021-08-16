@@ -1,17 +1,17 @@
 const mongoose=require('mongoose');
 const UserSchema={
-    first_name:{
+    url:{
         type:String,
         required:true
     },
-    last_name:{
-        type:String,
+    height:{
+        type:Number,
         required:true
     },
-    age:{
+    width:{
         type:Number,
         required:true
     },
 }
 
-module.exports=mongoose.model("User",UserSchema);
+module.exports=mongoose.model("Post",UserSchema);

@@ -1,5 +1,5 @@
 const exp = require("express");
-const Users =require("./appRoutes/users.js");
+const Posts =require("./appRoutes/posts");
 const DB_connection=require("./DB/DbConnection.js");
 const dotenv=require("dotenv");
 dotenv.config();
@@ -8,7 +8,7 @@ app = exp();
 
 app.use(exp.json());
 
-app.use("/users",Users);
+app.use("/posts",Posts);
 
 app.listen(process.env.PORT,()=>{
 console.log(`listning on port ${process.env.PORT}`)});
