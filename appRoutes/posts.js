@@ -2,23 +2,26 @@ const exp= require('express');
 const router=exp.Router();
 const Posts=require('../DB/model/PostModel');
 
+
+const docs_per_page=10;
+
 router.get("/:id",(req,res)=>{
        Posts.findOne({_id:req.params.id},(err,post)=>{ 
        if(err){
-           res.send("something went wrong");
+           res.json("something went wrong");
        }
-       res.send(post);
+       res.json(post);
         })})
    
 
 router.get("/",async(req,res)=>{
     try{
     const result=await Posts.find();
-    res.send(result);
+    res.json({"Data":result,"total_documents":result.length});
     }
     catch(err)
     {
-        res.status(400).send("something went wrong");
+        res.status(400).json("something went wrong");
         console.log("something went wrong",err);
     }
 })
@@ -32,13 +35,13 @@ router.post("/",async(req,res)=>{
         });
 
         post.save().then((msg)=>{
-            res.status(200).send({msg,messge:"successfully added to database"});
+            res.status(200).json({msg,messge:"successfully added to database"});
 
         })
 
     } catch (error) {
         console.log("herreeeee--------->>");
-        res.status(400).send(error);
+        res.status(400).json(error);
         
     }
 
@@ -48,10 +51,10 @@ router.delete("/:id",async(req,res)=>{
     try {
         const post=await Posts.findOne({_id:req.params.id});
         post.remove().then((msg)=>{
-            res.status(200).send({msg,messge:"successfully removed from database"});
+            res.status(200).json({msg,messge:"successfully removed from database"});
         })
     } catch (error) {
-        res.status(400).send(error);
+        res.status(400).json(error);
     }
 })
 
