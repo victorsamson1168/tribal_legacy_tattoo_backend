@@ -2,11 +2,13 @@ const exp = require("express");
 const Posts =require("./appRoutes/posts");
 const DB_connection=require("./DB/DbConnection.js");
 const dotenv=require("dotenv");
+const cors=require("cors");
 dotenv.config();
 
 app = exp();
 
 app.use(exp.json());
+app.use(cors());
 
 app.use("/posts",Posts);
 
