@@ -1,14 +1,16 @@
 const exp = require("express");
-const Users =require("./appRoutes/users.js");
+const Posts =require("./appRoutes/posts");
 const DB_connection=require("./DB/DbConnection.js");
 const dotenv=require("dotenv");
+const cors=require("cors");
 dotenv.config();
 
 app = exp();
 
 app.use(exp.json());
+app.use(cors());
 
-app.use("/users",Users);
+app.use("/posts",Posts);
 
 app.listen(process.env.PORT,()=>{
 console.log(`listning on port ${process.env.PORT}`)});
@@ -16,7 +18,7 @@ console.log(`listning on port ${process.env.PORT}`)});
 
 app.get("/",async(req,res)=>{
     try{
-        res.status(200).json({ status: "success", message: "Welcome to the API...test direct push"}).end();
+        res.status(200).json({ status: "success", message: "Welcome to the API...test direct push new"}).end();
     }
     catch(err)
     {
