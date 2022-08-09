@@ -3,6 +3,7 @@ const Posts =require("./appRoutes/posts");
 const DB_connection=require("./DB/DbConnection.js");
 const dotenv=require("dotenv");
 const cors=require("cors");
+const nodemailer =  require("./appRoutes/cronJob")
 dotenv.config();
 
 app = exp();
@@ -11,7 +12,8 @@ app.use(exp.json());
 app.use(cors());
 
 app.use("/posts",Posts);
-
+app.use("/nodeMailer",nodemailer)
+    
 app.listen(process.env.PORT,()=>{
 console.log(`listning on port ${process.env.PORT}`)});
 
