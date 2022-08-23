@@ -12,7 +12,7 @@ app.use(exp.json());
 app.use(cors());
 
 app.use("/posts",Posts);
-app.use("/nodeMailer",nodemailer)
+app.use("/automailer",nodemailer)
     
 app.listen(process.env.PORT,()=>{
 console.log(`listning on port ${process.env.PORT}`)});
